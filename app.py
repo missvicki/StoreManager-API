@@ -1,4 +1,3 @@
-import json
 from flask import Flask, jsonify, request
 from models.products import products, product
 
