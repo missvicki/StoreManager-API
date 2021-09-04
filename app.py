@@ -18,21 +18,21 @@ def get_products():
         return jsonify({"products": products})
 
 @app.route("/products/<int:id>", methods=["GET"])
-def get_product(id):
+def get_product(product_id):
     if request.method == "GET":
         result = {}
 
-        for product in products:
-            if int(product["id"]) == id:
-                result = jsonify({"product": product})
+        for prod in products:
+            if int(prod["product_id"]) == product_id:
+                result = jsonify({"product": prod})
         return result
 
 @app.route("/products/<int:id>", methods=["DELETE"])
-def delete_product(id):
+def delete_product(product_id):
     if request.method == "DELETE":
-        for product in products:
-            if product["id"] == id:
-                products.remove(product)
+        for prod in products:
+            if prod["product_id"] == product_id:
+                products.remove(prod)
                 result = jsonify({"products": products, 'message': 'product successfully deleted'})
         return result
 
