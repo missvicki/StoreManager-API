@@ -30,7 +30,7 @@ def get_product(product_id):
 def delete_product(product_id):
     if request.method == "DELETE":
         for prod in products:
-            if prod["product_id"] == product_id:
+            if int(prod["product_id"]) == product_id:
                 products.remove(prod)
                 result = jsonify({"products": products, 'message': 'product successfully deleted'})
         return result
