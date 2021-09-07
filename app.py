@@ -16,7 +16,7 @@ def get_products():
         products.append(product)
         return jsonify({"products": products})
 
-@app.route("/products/<int:id>", methods=["GET"])
+@app.route("/products/<int:product_id>", methods=["GET"])
 def get_product(product_id):
     if request.method == "GET":
         result = {}
@@ -26,11 +26,11 @@ def get_product(product_id):
                 result = jsonify({"product": prod})
         return result
 
-@app.route("/products/<int:id>", methods=["DELETE"])
+@app.route("/products/<int:product_id>", methods=["DELETE"])
 def delete_product(product_id):
     if request.method == "DELETE":
         for prod in products:
-            if prod["product_id"] == product_id:
+            if int(prod["product_id"]) == product_id:
                 products.remove(prod)
                 result = jsonify({"products": products, 'message': 'product successfully deleted'})
         return result
